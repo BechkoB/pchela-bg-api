@@ -1,0 +1,6 @@
+{
+    "secret": "zuD27f4QpPFMPZTfePU5UbnV97kU5Fhy1As5OzpS",
+    "allowedCorsOrigins": [
+        "http://localhost:4200"
+    ]
+}
