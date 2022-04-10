@@ -1,4 +1,6 @@
 const express = require('express');
+const verifyToken = require('../helpers/auth');
+
 
 const {
     createBeeGarden,
@@ -9,12 +11,12 @@ const {
 
 const gardenRouter = express.Router();
 
-gardenRouter.post('/add', createBeeGarden);
+gardenRouter.post('/add', verifyToken, createBeeGarden);
 
 gardenRouter.get('/list', getAllBeeGardens);
 
-gardenRouter.get('/:id', getBeeGardenById);
+gardenRouter.get('/:id',verifyToken, getBeeGardenById);
 
-gardenRouter.get('/:id/hives', getHivesByGardenId);
+gardenRouter.get('/:id/hives',verifyToken, getHivesByGardenId);
 
 module.exports = gardenRouter;

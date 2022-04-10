@@ -62,7 +62,7 @@ async function loginUser(req, res) {
             res.status(200).json({
                 success: true,
                 token,
-                userid: user._id,
+                userId: user._id,
                 email: user.email
             });
         } else {
@@ -79,9 +79,22 @@ async function loginUser(req, res) {
     }
 }
 
+// Edit user by Id
+function editUsers(req, res) {
+    User.findOneAndUpdate(
+        { _id: req.body.id },
+        {
+            $set: { isActive: true }
+        }
+    ).then(() => {
+        res.status(200).json({
+            success: true
+        });
+    });
+}
+
 module.exports = {
     editUsers,
-    getRegUsers,
     registerUser,
     loginUser
 };

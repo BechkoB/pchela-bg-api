@@ -2,6 +2,7 @@ const { BeeGarden } = require('../database/models/beeGarden.model');
 const { BeeHives } = require('../database/models/beeHive.model');
 
 async function createBeeGarden(req, res) {
+    const ownerId = req.body.ownerId.trim();
     const name = req.body.name.trim();
     const lat = req.body.lat.trim();
     const lng = req.body.lng.trim();
@@ -19,6 +20,7 @@ async function createBeeGarden(req, res) {
         }
 
         const newGarden = new BeeGarden({
+            ownerId,
             name,
             lat,
             lng

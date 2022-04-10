@@ -9,4 +9,6 @@ userRouter.post('/register', registerUser);
 // Login User
 userRouter.post('/login', loginUser);
 
+userRouter.get('/test', (req, res) => res.json({ message: 'Hello' }))
+
 module.exports = userRouter;
