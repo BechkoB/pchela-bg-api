@@ -25,11 +25,12 @@ async function registerUser(req, res) {
                 email,
                 password: hash
             });
-            newUser.save().then(() => {
+            newUser.save().then((user) => {
                 res.status(200).json({
                     success: true,
                     email,
-                    token
+                    token,
+                    userId: user._id
                 });
             });
         });

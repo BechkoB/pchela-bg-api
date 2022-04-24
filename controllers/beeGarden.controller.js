@@ -40,6 +40,25 @@ async function createBeeGarden(req, res) {
     }
 }
 
+async function getRecentBeeGardens(req, res) {
+    try {
+        BeeGarden.find({
+            beeGarden: req.body.id
+        })
+            .sort({ created_at: -1 })
+            .limit(5)
+            .then((list) => {
+                res.send(list);
+            })
+            .catch((e) => {
+                res.send(e);
+            });
+    } catch (err) {
+        console.log('Error while getting all BeeGardens!');
+        console.log(err.message);
+    }
+}
+
 async function getAllBeeGardens(req, res) {
     try {
         BeeGarden.find({
@@ -95,5 +114,6 @@ module.exports = {
     createBeeGarden,
     getAllBeeGardens,
     getBeeGardenById,
-    getHivesByGardenId
+    getHivesByGardenId,
+    getRecentBeeGardens
 };

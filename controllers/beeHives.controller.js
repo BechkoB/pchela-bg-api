@@ -22,7 +22,6 @@ async function createHive(req, res) {
 
         const newHive = new BeeHives({
             name: hiveName,
-            device: device._id,
             line: hiveLine,
             beeGarden: req.body.id.trim()
         });
