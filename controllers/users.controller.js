@@ -75,18 +75,15 @@ async function loginUser(req, res) {
     } catch (err) {
         res.status(500).json({
             type: 'Not Found',
-            msg: err
+            msg: err.message
         });
     }
 }
 
 // Edit user by Id
-function editUsers(req, res) {
+function editUser(req, res) {
     User.findOneAndUpdate(
-        { _id: req.body.id },
-        {
-            $set: { isActive: true }
-        }
+        { _id: req.body.id }
     ).then(() => {
         res.status(200).json({
             success: true
@@ -94,8 +91,18 @@ function editUsers(req, res) {
     });
 }
 
+function returnUserData(req, res) {
+    User.findById(req.params.id).select("-password")
+    .then((user) => {
+        res.status(200).json({
+            user
+        })
+    })
+}
+
 module.exports = {
-    editUsers,
+    editUser,
     registerUser,
-    loginUser
+    loginUser,
+    returnUserData
 };

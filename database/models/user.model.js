@@ -11,6 +11,27 @@ const UserSchema = new Schema(
             trim: true,
             unique: true
         },
+        firstName: {
+            type: String,
+            required: false,
+            default: '',
+            trim: true,
+            unique: true
+        },
+        secondName: {
+            type: String,
+            required: false,
+            default: '',
+            trim: true,
+            unique: true
+        },
+        phone: {
+            type: String,
+            required: false,
+            default: '',
+            trim: true,
+            unique: true
+        },
         password: {
             type: String,
             required: true

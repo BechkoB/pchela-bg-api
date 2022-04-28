@@ -5,7 +5,11 @@ const { Schema } = mongoose;
 const BeeGardenSchema = new Schema(
     {
         id: Schema.Types.ObjectId,
-        ownerId: Schema.Types.ObjectId,
+        ownerId: { 
+            type :Schema.Types.ObjectId,
+            ref: 'User',
+            required: true
+        },
         name: {
             type: String,
             required: true

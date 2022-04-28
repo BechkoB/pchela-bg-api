@@ -42,10 +42,8 @@ async function createBeeGarden(req, res) {
 
 async function getRecentBeeGardens(req, res) {
     try {
-        BeeGarden.find({
-            beeGarden: req.body.id
-        })
-            .sort({ created_at: -1 })
+        BeeGarden.find()
+            .sort({ createdAt: -1 })
             .limit(5)
             .then((list) => {
                 res.send(list);
